@@ -1,0 +1,32 @@
+1.Select Street, count(*)
+from ds_details
+where is_shooting = ‘Y’,  Group by ‘Street’
+
+2.
+Select det.is_weekend, cf.offence_code,count(*)
+from ds_details det join crimeFact cf on det.CID=cf.CID
+where is_weekend = ‘Y’
+group by IS_WEEKEND, cf.offence_code
+
+3.
+Select det.is_shoou, cf.offence_code,count(*)
+from ds_details det join crimeFact cf on det.CID=cf.CID
+where is_shooting = ‘Y’ 
+group by IS_Shooting, cf.offence_code
+
+4.Select Street, count(*)
+from ds_details
+group by Street
+order by desc
+
+5.Select des.offence_code, des.description, 
+SUM(des.offence_code) OVER (order by det.U_C_R_part) AS shooting_count
+from ds_description des, ds_details det, crimeFact cf
+where des.offence_code = cf. offence_code and cf.CID = det.CID
+and is_shooting = ‘Y’
+
+6.
+Select des.offence_code, des.description, 
+SUM(des.offence_code) OVER (order by det.hour) AS incident_count
+from ds_description des, ds_details det, crimeFact cf
+where des.offence_code = cf. offence_code and cf.CID = det.CID
