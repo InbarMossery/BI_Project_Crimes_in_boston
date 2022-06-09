@@ -1,0 +1,22 @@
+ָָָָָָָָָָָָָָָָCREATE TABLE `ds_description` (
+  `offence_code` int NOT NULL,
+  `description` varchar(50) DEFAULT NULL,
+    PRIMARY KEY (offence_code)))
+
+CREATE TABLE crimeFact (
+CID INT NOT NULL, 
+offence_code INT NOT NULL,
+ `Full_Date` date DEFAULT '0000',
+FOREIGN KEY (CID) REFERENCES ds_Detaiels (CID),
+FOREIGN KEY (offence_code) REFERENCES ds_desription (offence_code)  
+  ))
+
+CREATE TABLE `ds_Detaiels` (
+  `CId` int NOT NULL,
+  `Full_Date` date DEFAULT '0000',
+  `Hour` time DEFAULT -1,
+  `is_shooting` boolean(1) DEFAULT NULL,
+  `Street` varchar(50) DEFAULT NULL,
+  'is_weekend' boolean(1) DEFAULT NULL,
+  'UCR_part' VARCHAR (50) DEFAULT NULL,
+    PRIMARY KEY (CId))
